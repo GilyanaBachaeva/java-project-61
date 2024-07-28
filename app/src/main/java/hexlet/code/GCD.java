@@ -1,4 +1,7 @@
 package hexlet.code;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GCD {
@@ -15,19 +18,17 @@ public class GCD {
     public static void findGCD() {
         String taskText = "Find the greatest common divisor of given numbers";
 
-        String[] result = new String[3];
-        String[] expression = new String[3];
+        List<SimpleEntry<String, String>> rounds = new ArrayList<>();
 
         for (int i = 0; i < 3; ++i) {
             int numb1 = new Random().nextInt(100) + 1;
             int numb2 = new Random().nextInt(100) + 1;
 
-            String curr_expression = "Question: " + numb1 + " " + numb2;
-            String curr_result = String.valueOf(gcdByBruteForce(numb1, numb2));
+            String currExpression = "Question: " + numb1 + " " + numb2;
+            String currResult = String.valueOf(gcdByBruteForce(numb1, numb2));
 
-            expression[i] = curr_expression;
-            result[i] = curr_result;
+            rounds.add(new SimpleEntry<>(currExpression, currResult));
         }
-        Engine.getStart(taskText, result, expression);
+        Engine.getStart(taskText, rounds);
     }
 }

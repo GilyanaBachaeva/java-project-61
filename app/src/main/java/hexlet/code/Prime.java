@@ -1,4 +1,7 @@
 package hexlet.code;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Prime {
@@ -17,19 +20,21 @@ public class Prime {
     public static void gamePrime() {
         String taskText = "Answer 'yes' if given number is prime. Otherwise answer 'no'";
 
-        String[] result = new String[3];
-        String[] expression = new String[3];
+        List<SimpleEntry<String, String>> rounds = new ArrayList<>();
+        String currExpression = "";
+        String currResult = "";
 
         for (int i = 0; i < 3; ++i) {
-            expression[i] = String.valueOf(new Random().nextInt(100) + 1);
+            currExpression = String.valueOf(new Random().nextInt(100) + 1);
             int theNumber;
-            theNumber = Integer.parseInt(expression[i]);
+            theNumber = Integer.parseInt(currExpression);
             if (isPrime(theNumber)) {
-                result[i] = "yes";
+                currResult = "yes";
             } else {
-                result[i] = "no";
+                currResult = "no";
             }
+            rounds.add(new SimpleEntry<>(currExpression, currResult));
         }
-        Engine.getStart(taskText, result, expression);
+        Engine.getStart(taskText, rounds);
     }
 }
