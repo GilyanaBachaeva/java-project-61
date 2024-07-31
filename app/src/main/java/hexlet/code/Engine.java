@@ -17,7 +17,7 @@ public class Engine {
 
         int wrongAnswer = 0;
         for (SimpleEntry<String, String> round: rounds) {
-            System.out.println(round.getKey() + "\nYour answer: ");
+            System.out.println("Question: " + round.getKey() + "\nYour answer: ");
             String userAnswer = scanner.next();
             if (userAnswer.equals(round.getValue())) {
                 System.out.println("Correct!");
