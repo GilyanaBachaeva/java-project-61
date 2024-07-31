@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Engine {
+    public static final int NUMBQUESTIONS = 3;
+
     public static void getStart(String taskText, List<SimpleEntry<String, String>> rounds) {
         Scanner scanner = new Scanner(System.in);
 

@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static hexlet.code.Engine.NUMBQUESTIONS;
+
 public class Even {
-    public static boolean isEven(int number) {
-        return number % 2 == 0;
+    public static String generateAnswer(int number) {
+        if (number % 2 == 0) {
+            return "yes";
+        }
+        return "no";
     }
 
     public static void evenGame() {
@@ -16,15 +21,11 @@ public class Even {
         String currExpression = "";
         String currResult = "";
 
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < NUMBQUESTIONS; ++i) {
             currExpression = String.valueOf(new Random().nextInt(100) + 1);
             int theNumber;
             theNumber = Integer.parseInt(currExpression);
-            if (isEven(theNumber)) {
-                currResult = "yes";
-            } else {
-                currResult = "no";
-            }
+            currResult = generateAnswer(theNumber);
             rounds.add(new SimpleEntry<>(currExpression, currResult));
         }
         Engine.getStart(taskText, rounds);

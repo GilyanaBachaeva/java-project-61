@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static hexlet.code.Engine.NUMBQUESTIONS;
+
 public class Prime {
-    public static boolean isPrime(int number) {
+    public static String generateAnswer(int number) {
         if (number <= 1) {
-            return false;
+            return "no";
         }
         for (int i = 2; i * i <= number; i++) {
             if (number % i == 0) {
-                return false;
+                return "no";
             }
         }
-        return true;
+        return "yes";
     }
 
     public static void gamePrime() {
@@ -24,15 +26,12 @@ public class Prime {
         String currExpression = "";
         String currResult = "";
 
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < NUMBQUESTIONS; ++i) {
             currExpression = String.valueOf(new Random().nextInt(100) + 1);
             int theNumber;
             theNumber = Integer.parseInt(currExpression);
-            if (isPrime(theNumber)) {
-                currResult = "yes";
-            } else {
-                currResult = "no";
-            }
+            currResult = generateAnswer(theNumber);
+
             rounds.add(new SimpleEntry<>(currExpression, currResult));
         }
         Engine.getStart(taskText, rounds);
