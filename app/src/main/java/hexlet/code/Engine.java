@@ -1,4 +1,4 @@
-package hexlet.code.games;
+package hexlet.code;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
@@ -18,7 +18,6 @@ public class Engine {
 
         System.out.println(taskText);
 
-        int wrongAnswer = 0;
         for (SimpleEntry<String, String> round: rounds) {
             System.out.println("Question: " + round.getKey() + "\nYour answer: ");
             String userAnswer = scanner.next();
@@ -26,16 +25,11 @@ public class Engine {
                 System.out.println("Correct!");
             } else {
                 System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + round.getValue() + ".");
-                wrongAnswer++;
+                System.out.println("Let's try again, " + userName + "!");
+                return;
             }
-        }
-
-        if (wrongAnswer > 0) {
-            System.out.println("Let's try again, " + userName + "!");
-        } else {
             System.out.println("Congratulations, " + userName + "!");
         }
-
         scanner.close();
     }
 }

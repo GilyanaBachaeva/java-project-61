@@ -1,24 +1,25 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static hexlet.code.games.Engine.NUMBQUESTIONS;
+import static hexlet.code.Engine.NUMBQUESTIONS;
 
 
 public class Calculator {
-    private static int answer;
 
-    public static int calculateGcd(int numb1, int numb2, String operand) {
-        if (operand.equals("+")) {
-            answer = numb1 + numb2;
-        } else if (operand.equals("-")) {
-            answer = numb1 - numb2;
-        } else {
-            answer = numb1 * numb2;
-        }
+    public static int calculateGcd(int numb1, int numb2, String operand) throws Error {
+        int answer;
+        answer = switch (operand) {
+            case "+" -> numb1 + numb2;
+            case "-" -> numb1 - numb2;
+            case "*" -> numb1 * numb2;
+            default -> throw new Error("Unknown operand");
+        };
         return answer;
     }
 

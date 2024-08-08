@@ -1,11 +1,13 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static hexlet.code.games.Engine.NUMBQUESTIONS;
+import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Even {
     public static boolean evenGcd(int number) {

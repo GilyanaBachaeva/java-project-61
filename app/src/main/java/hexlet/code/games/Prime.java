@@ -1,23 +1,25 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static hexlet.code.games.Engine.NUMBQUESTIONS;
+import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Prime {
-    public static String primeGcd(int number) {
+    public static boolean primeGcd(int number) {
         if (number <= 1) {
-            return "no";
+            return true;
         }
         for (int i = 2; i * i <= number; i++) {
             if (number % i == 0) {
-                return "no";
+                return false;
             }
         }
-        return "yes";
+        return true;
     }
 
     public static void gamePrime() {
@@ -31,8 +33,11 @@ public class Prime {
             currExpression = String.valueOf(new Random().nextInt(100) + 1);
             int theNumber;
             theNumber = Integer.parseInt(currExpression);
-            currResult = primeGcd(theNumber);
-
+            if (primeGcd(theNumber)) {
+                currResult = "yes";
+            } else {
+                currResult = "no";
+            }
             rounds.add(new SimpleEntry<>(currExpression, currResult));
         }
         Engine.getStart(taskText, rounds);
