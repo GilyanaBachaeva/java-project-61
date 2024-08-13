@@ -9,10 +9,10 @@ import java.util.Random;
 import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Progression {
-    public static List<Integer> progressionGcd(int step, int start, int size) {
+    public static List<Integer> progressionGcd(int step, int start, int sizeOfExpression) {
         List<Integer> expression = new ArrayList<>();
         expression.add(start);
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < sizeOfExpression; i++) {
             expression.add(expression.get(i) + step);
         }
         return expression;
@@ -24,12 +24,13 @@ public class Progression {
         List<SimpleEntry<String, String>> rounds = new ArrayList<>();
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            int step = new Random().nextInt(8) + 1;
+            int limit = 8;
+            int step = new Random().nextInt(limit) + 1;
             int start = 2;
-            int size = 9;
-            List<Integer> expression = progressionGcd(step, start, size);
+            int sizeOfExpression = 9;
+            List<Integer> expression = progressionGcd(step, start, sizeOfExpression);
 
-            int index = new Random().nextInt(8);
+            int index = new Random().nextInt(limit);
             int hideNumb = expression.get(index);
             String currExpression = "";
             for (int numb : expression) {

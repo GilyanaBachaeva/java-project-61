@@ -29,9 +29,11 @@ public class Calculator {
         List<SimpleEntry<String, String>> rounds = new ArrayList<>();
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            int numbExp = (int) (Math.random() * 3);  // случайный выбор операнда
-            int numb1 = new Random().nextInt(100) + 1;
-            int numb2 = new Random().nextInt(100) + 1;
+            int numbOperand = 3;
+            int numbExp = (int) (Math.random() * numbOperand);  // случайный выбор операнда
+            int limit = 100;
+            int numb1 = new Random().nextInt(limit) + 1;
+            int numb2 = new Random().nextInt(limit) + 1;
             String operand = operate[numbExp];
             String currExpression = numb1 + " " + operand + " " + numb2;
 

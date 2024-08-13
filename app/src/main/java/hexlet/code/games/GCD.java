@@ -26,8 +26,9 @@ public class GCD {
         List<SimpleEntry<String, String>> rounds = new ArrayList<>();
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            int numb1 = new Random().nextInt(100) + 1;
-            int numb2 = new Random().nextInt(100) + 1;
+            int limit = 100;
+            int numb1 = new Random().nextInt(limit) + 1;
+            int numb2 = new Random().nextInt(limit) + 1;
 
             String currExpression = numb1 + " " + numb2;
             String currResult = String.valueOf(generateGcd(numb1, numb2));

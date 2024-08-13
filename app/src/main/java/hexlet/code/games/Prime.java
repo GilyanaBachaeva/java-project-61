@@ -30,7 +30,8 @@ public class Prime {
         String currResult = "";
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            currExpression = String.valueOf(new Random().nextInt(100) + 1);
+            int limit = 100;
+            currExpression = String.valueOf(new Random().nextInt(limit) + 1);
             int theNumber;
             theNumber = Integer.parseInt(currExpression);
             if (primeGcd(theNumber)) {
