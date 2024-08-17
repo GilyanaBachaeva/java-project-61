@@ -10,26 +10,23 @@ import java.util.Random;
 import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Even {
-    public static boolean evenGcd(int number) {
-        if (number % 2 == 0) {
-            return true;
-        }
-        return false;
+    public static boolean evenStatus(int number) {
+        return number % 2 == 0;
     }
 
     public static void evenGame() {
-        String taskText = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        final String taskText = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        final List<SimpleEntry<String, String>> rounds = new ArrayList<>();
+        final int limitOfComputing = 100;
 
-        List<SimpleEntry<String, String>> rounds = new ArrayList<>();
         String currExpression = "";
         String currResult = "";
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            int limit = 100;
-            currExpression = String.valueOf(new Random().nextInt(limit) + 1);
+            currExpression = String.valueOf(new Random().nextInt(limitOfComputing) + 1);
             int theNumber;
             theNumber = Integer.parseInt(currExpression);
-            if (evenGcd(theNumber)) {
+            if (evenStatus(theNumber)) {
                 currResult = "yes";
             } else {
                 currResult = "no";

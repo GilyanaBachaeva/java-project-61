@@ -10,7 +10,7 @@ import java.util.Random;
 import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Prime {
-    public static boolean primeGcd(int number) {
+    public static boolean primeStatus(int number) {
         if (number <= 1) {
             return true;
         }
@@ -23,18 +23,18 @@ public class Prime {
     }
 
     public static void gamePrime() {
-        String taskText = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        final String taskText = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        final List<SimpleEntry<String, String>> rounds = new ArrayList<>();
+        final int limitOfComputing = 100;
 
-        List<SimpleEntry<String, String>> rounds = new ArrayList<>();
         String currExpression = "";
         String currResult = "";
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            int limit = 100;
-            currExpression = String.valueOf(new Random().nextInt(limit) + 1);
+            currExpression = String.valueOf(new Random().nextInt(limitOfComputing) + 1);
             int theNumber;
             theNumber = Integer.parseInt(currExpression);
-            if (primeGcd(theNumber)) {
+            if (primeStatus(theNumber)) {
                 currResult = "yes";
             } else {
                 currResult = "no";

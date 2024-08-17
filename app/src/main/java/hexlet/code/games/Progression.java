@@ -9,28 +9,26 @@ import java.util.Random;
 import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Progression {
-    public static List<Integer> progressionGcd(int step, int start, int sizeOfExpression) {
+    public static List<Integer> generateProgressionLine(int step, int start, int sizeOfProgressionLine) {
         List<Integer> expression = new ArrayList<>();
         expression.add(start);
-        for (int i = 0; i < sizeOfExpression; i++) {
+        for (int i = 0; i < sizeOfProgressionLine; i++) {
             expression.add(expression.get(i) + step);
         }
         return expression;
     }
 
     public static void findProgression() {
-        String taskText = "What number is missing in the progression?";
-
-        List<SimpleEntry<String, String>> rounds = new ArrayList<>();
+        final String taskText = "What number is missing in the progression?";
+        final List<SimpleEntry<String, String>> rounds = new ArrayList<>();
+        final int limitOfComputing = 8;
+        final int step = new Random().nextInt(limitOfComputing) + 1;
+        final int start = 2;
+        final int sizeOfProgressionLine = 9;
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            int limit = 8;
-            int step = new Random().nextInt(limit) + 1;
-            int start = 2;
-            int sizeOfExpression = 9;
-            List<Integer> expression = progressionGcd(step, start, sizeOfExpression);
-
-            int index = new Random().nextInt(limit);
+            List<Integer> expression = generateProgressionLine(step, start, sizeOfProgressionLine);
+            int index = new Random().nextInt(sizeOfProgressionLine);
             int hideNumb = expression.get(index);
             String currExpression = "";
             for (int numb : expression) {
