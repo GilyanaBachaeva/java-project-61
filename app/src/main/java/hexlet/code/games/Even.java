@@ -10,20 +10,21 @@ import java.util.Random;
 import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Even {
-    public static boolean evenStatus(int number) {
+    private static final String TASK_TEXT = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static final int LIMIT_OF_COMPUTING = 100;
+
+    private static boolean evenStatus(int number) {
         return number % 2 == 0;
     }
 
     public static void evenGame() {
-        final String taskText = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         final List<SimpleEntry<String, String>> rounds = new ArrayList<>();
-        final int limitOfComputing = 100;
 
         String currExpression = "";
         String currResult = "";
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            currExpression = String.valueOf(new Random().nextInt(limitOfComputing) + 1);
+            currExpression = String.valueOf(new Random().nextInt(LIMIT_OF_COMPUTING) + 1);
             int theNumber;
             theNumber = Integer.parseInt(currExpression);
             if (evenStatus(theNumber)) {
@@ -33,6 +34,6 @@ public class Even {
             }
             rounds.add(new SimpleEntry<>(currExpression, currResult));
         }
-        Engine.getStart(taskText, rounds);
+        Engine.getStart(TASK_TEXT, rounds);
     }
 }

@@ -10,7 +10,10 @@ import java.util.Random;
 import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class GCD {
-    public static int generateAnswer(int n1, int n2) {
+    private static final String TASK_TEXT = "Find the greatest common divisor of given numbers.";
+    private static final int LIMIT_OF_COMPUTING = 100;
+
+    private static int generateAnswer(int n1, int n2) {
         int answer = 1;
         for (int i = 1; i <= n1 && i <= n2; i++) {
             if (n1 % i == 0 && n2 % i == 0) {
@@ -21,19 +24,16 @@ public class GCD {
     }
 
     public static void findGCD() {
-        final String taskText = "Find the greatest common divisor of given numbers.";
         final List<SimpleEntry<String, String>> rounds = new ArrayList<>();
-        final int limitOfComputing = 100;
-
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            int numb1 = new Random().nextInt(limitOfComputing) + 1;
-            int numb2 = new Random().nextInt(limitOfComputing) + 1;
+            int numb1 = new Random().nextInt(LIMIT_OF_COMPUTING) + 1;
+            int numb2 = new Random().nextInt(LIMIT_OF_COMPUTING) + 1;
 
             String currExpression = numb1 + " " + numb2;
             String currResult = String.valueOf(generateAnswer(numb1, numb2));
 
             rounds.add(new SimpleEntry<>(currExpression, currResult));
         }
-        Engine.getStart(taskText, rounds);
+        Engine.getStart(TASK_TEXT, rounds);
     }
 }

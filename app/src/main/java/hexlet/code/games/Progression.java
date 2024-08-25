@@ -9,7 +9,13 @@ import java.util.Random;
 import static hexlet.code.Engine.NUMBQUESTIONS;
 
 public class Progression {
-    public static List<Integer> generateProgressionLine(int step, int start, int sizeOfProgressionLine) {
+    private static final String TASK_TEXT = "What number is missing in the progression?";
+    private static final int LIMIT_OF_COMPUTING = 8;
+    private static final int STEP = new Random().nextInt(LIMIT_OF_COMPUTING) + 1;
+    private static final int START = 2;
+    private static final int SIZE_OF_PROGRESSION_LINE = 9;
+
+    private static List<Integer> generateProgressionLine(int step, int start, int sizeOfProgressionLine) {
         List<Integer> expression = new ArrayList<>();
         expression.add(start);
         for (int i = 0; i < sizeOfProgressionLine; i++) {
@@ -19,16 +25,11 @@ public class Progression {
     }
 
     public static void findProgression() {
-        final String taskText = "What number is missing in the progression?";
         final List<SimpleEntry<String, String>> rounds = new ArrayList<>();
-        final int limitOfComputing = 8;
-        final int step = new Random().nextInt(limitOfComputing) + 1;
-        final int start = 2;
-        final int sizeOfProgressionLine = 9;
 
         for (int i = 0; i < NUMBQUESTIONS; ++i) {
-            List<Integer> expression = generateProgressionLine(step, start, sizeOfProgressionLine);
-            int index = new Random().nextInt(sizeOfProgressionLine);
+            List<Integer> expression = generateProgressionLine(STEP, START, SIZE_OF_PROGRESSION_LINE);
+            int index = new Random().nextInt(SIZE_OF_PROGRESSION_LINE);
             int hideNumb = expression.get(index);
             String currExpression = "";
             for (int numb : expression) {
@@ -41,6 +42,6 @@ public class Progression {
 
             rounds.add(new SimpleEntry<>(currExpression, String.valueOf(hideNumb)));
         }
-        Engine.getStart(taskText, rounds);
+        Engine.getStart(TASK_TEXT, rounds);
     }
 }
